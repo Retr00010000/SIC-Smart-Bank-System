@@ -1,0 +1,122 @@
+[
+    {
+        "ID": 1,
+        "profile": {
+            "name": "Ahmed Ali",
+            "password": "admin123",
+            "phone": "01011111111",
+            "email": "ahmed@sicbank.com",
+            "gender": "Male",
+            "age": "35",
+            "city": "Cairo",
+            "account_type": "Admin"
+        },
+        "wallet": {
+            "balance": 25000.0,
+            "currency": "EGP"
+        },
+        "settings": {
+            "sms_alerts": true,
+            "email_notifications": true,
+            "paperless_statements": true
+        },
+        "active": true,
+        "vip": true,
+        "admin": true,
+        "failed_login": false,
+        "transactions": [
+            "Deposit: +25000 EGP (25000.00 EGP)",
+            "Withdrawal: -100 USD (4739.00 EGP)",
+            "Transfer Sent: -2000 EGP (2000.00 EGP) to Mohamed Samir (ID: 2)"
+        ]
+    },
+    {
+        "ID": 2,
+        "profile": {
+            "name": "Mohamed Samir",
+            "password": "mohamed123",
+            "phone": "01022222222",
+            "email": "mohamed@sicbank.com",
+            "gender": "Male",
+            "age": "29",
+            "city": "Alexandria",
+            "account_type": "VIP"
+        },
+        "wallet": {
+            "balance": 12000.0,
+            "currency": "EGP"
+        },
+        "settings": {
+            "sms_alerts": true,
+            "email_notifications": true,
+            "paperless_statements": true
+        },
+        "active": true,
+        "vip": true,
+        "admin": false,
+        "failed_login": false,
+        "transactions": [
+            "Deposit: +10000 EGP (10000.00 EGP)",
+            "Transfer Received: +2000.00 EGP from Ahmed Ali (ID: 1)"
+        ]
+    },
+    {
+        "ID": 3,
+        "profile": {
+            "name": "Omar Tarek",
+            "password": "omar123",
+            "phone": "01033333333",
+            "email": "omar@sicbank.com",
+            "gender": "Male",
+            "age": "24",
+            "city": "Giza",
+            "account_type": "Standard"
+        },
+        "wallet": {
+            "balance": 4500.0,
+            "currency": "EGP"
+        },
+        "settings": {
+            "sms_alerts": true,
+            "email_notifications": true,
+            "paperless_statements": true
+        },
+        "active": true,
+        "vip": false,
+        "admin": false,
+        "failed_login": false,
+        "transactions": [
+            "Deposit: +5000 EGP (5000.00 EGP)",
+            "Withdrawal: -500 EGP (500.00 EGP)"
+        ]
+    },
+    {
+        "ID": 4,
+        "profile": {
+            "name": "Amr",
+            "password": "123",
+            "phone": "015 252 2355",
+            "email": "amrbekhit@gmail.com",
+            "gender": "male",
+            "age": "20",
+            "city": "alexandria",
+            "account_type": "standard"
+        },
+        "wallet": {
+            "balance": 2.8434e+18,
+            "currency": "EGP"
+        },
+        "settings": {
+            "sms_alerts": true,
+            "email_notifications": true,
+            "paperless_statements": true
+        },
+        "active": true,
+        "vip": false,
+        "admin": false,
+        "failed_login": false,
+        "transactions": [
+            "Deposit: +6e+16 USD (2843400000000000000.00 EGP)"
+        ]
+    }
+]
