@@ -100,6 +100,31 @@ def get_safe_int(): # used in many functions so the program dosent crash if the 
         return int(user_input)
     return None
 
+import msvcrt
+
+def get_password(prompt):
+    print(prompt, end="", flush=True)
+    password = ""
+
+    while True:
+        char = msvcrt.getwch()
+
+        if char in ("\r", "\n"):       # Enter
+            print()
+            break
+        elif char == "\b":             # Backspace
+            if password:
+                password = password[:-1]
+                print("\b \b", end="", flush=True)
+        elif char == "\x03":           # Ctrl+C
+            raise KeyboardInterrupt
+        elif char in ("\x00", "\xe0"): # Special keys
+            msvcrt.getwch()
+        else:
+            password += char
+            print("*", end="", flush=True)
+
+    return password
 
 def parse_amount_and_currency(): # parse_amount_and_currency is used in multiple functions to parse the amount and currency input from the user.
     """
@@ -109,7 +134,7 @@ def parse_amount_and_currency(): # parse_amount_and_currency is used in multiple
     validates the format, currency, and amount value, and returns a tuple of
     (amount, currency, amount_in_egp). Returns None if the input is invalid.
     """
-    user_input = input("Enter amount and currency, example: 20 USD\n> ").strip()
+    user_input = get_password("Enter amount and currency, example: 20 USD\n>").strip()
     parts = user_input.split()
 
     if len(parts) != 2: # checks if the user entered two values, one for amount and one for currency
