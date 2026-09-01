@@ -119,31 +119,4 @@
             "Deposit: +6e+16 USD (2843400000000000000.00 EGP)"
         ]
     },
-    {
-        "ID": 5,
-        "profile": {
-            "name": "omar",
-            "password": "omar2006",
-            "phone": "01029082262",
-            "email": "omar.mo.adly@gmail.com",
-            "gender": "bi",
-            "age": "20",
-            "city": "alex",
-            "account_type": "Admin"
-        },
-        "wallet": {
-            "balance": 0.0,
-            "currency": "EGP"
-        },
-        "settings": {
-            "sms_alerts": true,
-            "email_notifications": true,
-            "paperless_statements": true
-        },
-        "active": true,
-        "vip": false,
-        "admin": true,
-        "failed_login": false,
-        "transactions": []
-    }
 ]
