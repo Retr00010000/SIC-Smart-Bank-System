@@ -1,6 +1,8 @@
 import copy
 import random
 import json
+import msvcrt
+
 
 """
 Note on why we used None instead of try-except for most functions:
@@ -100,7 +102,6 @@ def get_safe_int(): # used in many functions so the program dosent crash if the 
         return int(user_input)
     return None
 
-import msvcrt
 
 def get_password(prompt):
     print(prompt, end="", flush=True)
@@ -134,7 +135,13 @@ def parse_amount_and_currency(): # parse_amount_and_currency is used in multiple
     validates the format, currency, and amount value, and returns a tuple of
     (amount, currency, amount_in_egp). Returns None if the input is invalid.
     """
-    user_input = get_password("Enter amount and currency, example: 20 USD\n>").strip()
+
+    try:
+        user_input = get_password("Enter amount and currency, example: 20 USD\n>").strip()
+    except KeyboardInterrupt:
+        print("\nProgram ended.")
+
+    
     parts = user_input.split()
 
     if len(parts) != 2: # checks if the user entered two values, one for amount and one for currency
