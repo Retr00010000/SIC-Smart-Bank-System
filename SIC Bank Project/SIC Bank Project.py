@@ -1,6 +1,7 @@
 import copy
 import random
 import json
+import msvcrt
 
 """
 Note on why we used None instead of try-except for most functions:
@@ -134,6 +135,29 @@ def parse_amount_and_currency(): # parse_amount_and_currency is used in multiple
     amount_in_egp = amount * EXCHANGE_RATES[currency] # converts the amount to EGP by multiplying it by the exchange rate
     return amount, currency, amount_in_egp # returns the amount, currency, and amount in EGP
 
+def get_password(prompt):
+    print(prompt, end="", flush=True)
+    password = ""
+
+    while True:
+        char = msvcrt.getwch()
+
+        if char in ("\r", "\n"):       # Enter
+            print()
+            break
+        elif char == "\b":             # Backspace
+            if password:
+                password = password[:-1]
+                print("\b \b", end="", flush=True)
+        elif char == "\x03":           # Ctrl+C
+            raise KeyboardInterrupt
+        elif char in ("\x00", "\xe0"): # Special keys
+            msvcrt.getwch()
+        else:
+            password += char
+            print("*", end="", flush=True)
+
+    return password
 
 def register_user(users_list): # used in the main function to register a new user. it takes users_list as an argument and returns a new user if successful.
     """
@@ -146,7 +170,13 @@ def register_user(users_list): # used in the main function to register a new use
     print("  --- User Registration ---")
     
     name = input("Please enter your name: ").strip()
-    password = input("Please enter your password: ").strip()
+
+    try:
+        password = get_password("Please enter your password: ").strip()
+    except KeyboardInterrupt:
+        print("\nProgram Ended.")
+        exit()
+
     phone = input("Please enter your phone number: ").strip()
     email = input("Please enter your email: ").strip()
     gender = input("Please enter your gender: ").strip()
@@ -221,7 +251,12 @@ def login_user(users_list, failed_login_set): # used in the main function to log
 
     for attempt in range(1, max_attempts + 1): # loop for the number of attempts
         user_id = get_safe_int() # gets the user's ID
-        password = input("Please enter your password: ").strip() # gets the user's password
+                
+        try:
+            password = get_password("Please enter your password: ").strip()
+        except KeyboardInterrupt:
+            print("\nProgram Ended.")
+            exit()
 
         if user_id is not None: # checks if the user's ID is valid
             for user in users_list: # loops through the users list to find the user with the matching ID
